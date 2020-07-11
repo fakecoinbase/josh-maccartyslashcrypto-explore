@@ -13,7 +13,8 @@ library(tidyverse)
 library(BatchGetSymbols)
 ```
 
-## Read in Bit and Eth prices
+## Bit and Ethereum
+### Read in
 ```{r}
 # data pulled from coindesk manually
 d.bit <- data.table::fread( "bit_usd.csv", data.table=F ) %>%
@@ -22,9 +23,16 @@ d.eth <- data.table::fread( "eth_usd.csv", data.table=F ) %>%
   janitor::clean_names()
 ```
 
+### Rbind, fix date
+```{r}
+# crypto stack
+d.crypto <- d.bit %>%
+  bind_rows(d.eth) %>%
+  mutate( date=as.Date(date) )
+```
+
 
 ## Get Stock Data
-### Bit and Eth
 ```{r}
 # Date range
 first.date <- Sys.Date()-365
@@ -38,7 +46,64 @@ latest_marketcap <- get_global_marketcap('EUR')
 
 ```
 
+# Analysis
+## Crypto
 
+### Z-scores
+```{r}
+# Z-scores of closing price
+d.crypto.1 <- d.crypto %>%
+  group_by( currency ) %>%
+  mutate( close_z = scale( closing_price_usd , center=T ))
+```
+
+#### Plot Z-scores
+```{r}
+# Plot
+ggplot( d.crypto.1 ,
+        aes(
+          x=date,
+          y=close_z,
+          color=currency
+        )) +
+  
+  # Basics
+  geom_line()+
+  
+  scale_color_manual(values = RColorBrewer::brewer.pal( 11 , "Spectral")[c(1,3)]) +
+  
+  # Themes
+  theme_light() 
+```
+
+### Diff in Z-scores
+```{r}
+# Calculate difference in Z scores
+d.crypto.2 <- d.crypto.1 %>%
+  select( currency , date , close_z ) %>%
+  spread( currency , close_z) %>%
+  na.omit() %>% #BTC arrived on the planet before ETH
+  mutate(bit_minus_eth = BTC - ETH )
+```
+
+#### Plot Diff in Z-scores
+```{r}
+# Plot
+ggplot( d.crypto.2 ,
+        aes(
+          x=date,
+          y=bit_minus_eth
+        )) +
+  
+  # Basics
+  geom_line() +
+  
+  # Theme
+  theme_light() +
+  
+  # Colors
+  scale_color_manual(values=RColorBrewer::brewer.pal( 11 , "Spectral")[c(1)])
+```
 
 
 
