@@ -12,6 +12,7 @@ This is an exploratory analysis using Github for the first time
 library(tidyverse)
 library(BatchGetSymbols)
 library(coinmarketcapr)
+library(psymonitor)
 ```
 
 ## Get Data
@@ -31,6 +32,12 @@ d <- BatchGetSymbols(tickers = tickers,
                      last.date = last.date, 
                      freq.data = date.freq,
                      cache.folder = file.path(tempdir(), 'BGS_Cache') ) # cache in tempdir()
+
+# Pull 
+
+sp500_idx <- SP500()
+head(sp500_idx)
+data(snp)
 ```
 
 

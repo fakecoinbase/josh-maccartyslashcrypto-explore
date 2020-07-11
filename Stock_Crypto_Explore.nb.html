@@ -1774,22 +1774,13 @@ summary {
 <h3>Stock</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEYXRlIHJhbmdlXG5maXJzdC5kYXRlIDwtIFN5cy5EYXRlKCktMzY1XG5sYXN0LmRhdGUgPC0gU3lzLkRhdGUoKVxuZGF0ZS5mcmVxIDwtIFwiZGFpbHlcIlxuXG4jIFdoaWNoIHN0b2Nrc1xudGlja2VycyA8LSBcIkFUVklcIlxuICBcbiMgUHVsbCBhIGZldyB3ZWxsIGtub3duIHN0b2Nrc1xuZCA8LSBCYXRjaEdldFN5bWJvbHModGlja2VycyA9IHRpY2tlcnMsIFxuICAgICAgICAgICAgICAgICAgICAgZmlyc3QuZGF0ZSA9IGZpcnN0LmRhdGUsXG4gICAgICAgICAgICAgICAgICAgICBsYXN0LmRhdGUgPSBsYXN0LmRhdGUsIFxuICAgICAgICAgICAgICAgICAgICAgZnJlcS5kYXRhID0gZGF0ZS5mcmVxLFxuICAgICAgICAgICAgICAgICAgICAgY2FjaGUuZm9sZGVyID0gZmlsZS5wYXRoKHRlbXBkaXIoKSwgJ0JHU19DYWNoZScpICkgIyBjYWNoZSBpbiB0ZW1wZGlyKClcbmBgYCJ9 -->
-<pre class="r"><code># Date range
-first.date &lt;- Sys.Date()-365
-last.date &lt;- Sys.Date()
-date.freq &lt;- &quot;daily&quot;
-
-# Which stocks
-tickers &lt;- &quot;ATVI&quot;
-  
-# Pull a few well known stocks
-d &lt;- BatchGetSymbols(tickers = tickers, 
-                     first.date = first.date,
-                     last.date = last.date, 
-                     freq.data = date.freq,
-                     cache.folder = file.path(tempdir(), &#39;BGS_Cache&#39;) ) # cache in tempdir()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShzbnApXG5cbmBgYCJ9 -->
+<pre class="r"><code>data(snp)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZGF0YSBzZXQg4oCYc25w4oCZIG5vdCBmb3VuZFxuIn0= -->
+<pre><code>data set ‘snp’ not found</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1797,7 +1788,7 @@ d &lt;- BatchGetSymbols(tickers = tickers,
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU3RvY2sgRXhwbG9yZSIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBleHBsb3JhdG9yeSBhbmFseXNpcyB1c2luZyBHaXRodWIgZm9yIHRoZSBmaXJzdCB0aW1lCgojIFNldHVwCiMjIExpYnJhcmllcwpgYGB7cn0KIyBMaWJzCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KEJhdGNoR2V0U3ltYm9scykKbGlicmFyeShjb2lubWFya2V0Y2FwcikKYGBgCgojIyBHZXQgRGF0YQojIyMgU3RvY2sKYGBge3J9CiMgRGF0ZSByYW5nZQpmaXJzdC5kYXRlIDwtIFN5cy5EYXRlKCktMzY1Cmxhc3QuZGF0ZSA8LSBTeXMuRGF0ZSgpCmRhdGUuZnJlcSA8LSAiZGFpbHkiCgojIFdoaWNoIHN0b2Nrcwp0aWNrZXJzIDwtICJBVFZJIgogIAojIFB1bGwgYSBmZXcgd2VsbCBrbm93biBzdG9ja3MKZCA8LSBCYXRjaEdldFN5bWJvbHModGlja2VycyA9IHRpY2tlcnMsIAogICAgICAgICAgICAgICAgICAgICBmaXJzdC5kYXRlID0gZmlyc3QuZGF0ZSwKICAgICAgICAgICAgICAgICAgICAgbGFzdC5kYXRlID0gbGFzdC5kYXRlLCAKICAgICAgICAgICAgICAgICAgICAgZnJlcS5kYXRhID0gZGF0ZS5mcmVxLAogICAgICAgICAgICAgICAgICAgICBjYWNoZS5mb2xkZXIgPSBmaWxlLnBhdGgodGVtcGRpcigpLCAnQkdTX0NhY2hlJykgKSAjIGNhY2hlIGluIHRlbXBkaXIoKQpgYGAKCgoKCgoKCgoKCgoKCgoKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU3RvY2sgRXhwbG9yZSIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBleHBsb3JhdG9yeSBhbmFseXNpcyB1c2luZyBHaXRodWIgZm9yIHRoZSBmaXJzdCB0aW1lCgojIFNldHVwCiMjIExpYnJhcmllcwpgYGB7cn0KIyBMaWJzCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KEJhdGNoR2V0U3ltYm9scykKbGlicmFyeShjb2lubWFya2V0Y2FwcikKbGlicmFyeShwc3ltb25pdG9yKQpgYGAKCiMjIEdldCBEYXRhCiMjIyBTdG9jawpgYGB7cn0KIyBEYXRlIHJhbmdlCmZpcnN0LmRhdGUgPC0gU3lzLkRhdGUoKS0zNjUKbGFzdC5kYXRlIDwtIFN5cy5EYXRlKCkKZGF0ZS5mcmVxIDwtICJkYWlseSIKCiMgV2hpY2ggc3RvY2tzCnRpY2tlcnMgPC0gIkFUVkkiCiAgCiMgUHVsbCBhIGZldyB3ZWxsIGtub3duIHN0b2NrcwpkIDwtIEJhdGNoR2V0U3ltYm9scyh0aWNrZXJzID0gdGlja2VycywgCiAgICAgICAgICAgICAgICAgICAgIGZpcnN0LmRhdGUgPSBmaXJzdC5kYXRlLAogICAgICAgICAgICAgICAgICAgICBsYXN0LmRhdGUgPSBsYXN0LmRhdGUsIAogICAgICAgICAgICAgICAgICAgICBmcmVxLmRhdGEgPSBkYXRlLmZyZXEsCiAgICAgICAgICAgICAgICAgICAgIGNhY2hlLmZvbGRlciA9IGZpbGUucGF0aCh0ZW1wZGlyKCksICdCR1NfQ2FjaGUnKSApICMgY2FjaGUgaW4gdGVtcGRpcigpCgojIFB1bGwgCgpzcDUwMF9pZHggPC0gU1A1MDAoKQpoZWFkKHNwNTAwX2lkeCkKZGF0YShzbnApCmBgYAoKCgoKCgoKCgoKCgoKCgoKCgo=</div>
 
 
 
