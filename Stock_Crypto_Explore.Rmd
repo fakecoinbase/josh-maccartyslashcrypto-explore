@@ -3,20 +3,28 @@ title: "Stock Explore"
 output: html_notebook
 ---
 
-This is an exploratory analysis using Github for the first time
+This is an exploratory analysis of Ethereum and Bitcoin
 
 # Setup
 ## Libraries
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Libs
 library(tidyverse)
 library(BatchGetSymbols)
-library(coinmarketcapr)
-library(psymonitor)
 ```
 
-## Get Data
-### Stock
+## Read in Bit and Eth prices
+```{r}
+# data pulled from coindesk manually
+d.bit <- data.table::fread( "bit_usd.csv", data.table=F ) %>%
+  janitor::clean_names()
+d.eth <- data.table::fread( "eth_usd.csv", data.table=F ) %>%
+  janitor::clean_names()
+```
+
+
+## Get Stock Data
+### Bit and Eth
 ```{r}
 # Date range
 first.date <- Sys.Date()-365
@@ -24,20 +32,10 @@ last.date <- Sys.Date()
 date.freq <- "daily"
 
 # Which stocks
-tickers <- "ATVI"
-  
-# Pull a few well known stocks
-d <- BatchGetSymbols(tickers = tickers, 
-                     first.date = first.date,
-                     last.date = last.date, 
-                     freq.data = date.freq,
-                     cache.folder = file.path(tempdir(), 'BGS_Cache') ) # cache in tempdir()
+latest_marketcap <- get_global_marketcap('EUR')
 
 # Pull 
 
-sp500_idx <- SP500()
-head(sp500_idx)
-data(snp)
 ```
 
 
